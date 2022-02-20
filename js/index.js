@@ -1,32 +1,52 @@
-let pricingSlider = new Swiper(".pricing-slider", {
-  edgeSwipeThreshold: 0,
-  slidesPerView: 3,
-  spaceBetween: 30,
-  autoHeight: true,
-  navigation: {
-    nextEl: ".pricing-slider__button-next",
-    prevEl: ".pricing-slider__button-prev",
-  },
-  allowSlideNext: false,
-  allowSlidePrev: false,
-});
-const pricingNext = pricingSlider.el.querySelector(
-  ".pricing-slider__button-next"
-);
-pricingNext.addEventListener("click", () => {
-  pricingSlider.allowSlideNext = true;
-  pricingSlider.slideNext();
-  pricingSlider.allowSlideNext = false;
-});
+const pricingSliderClass = ".pricing-slider";
+if (
+  document
+    .querySelector(pricingSliderClass)
+    .classList.value.includes("swiper") &&
+  window.innerWidth < 993
+) {
+  const slider = document.querySelector(pricingSliderClass);
+  slider.classList.remove("swiper");
+  slider.querySelector(".swiper-wrapper").classList.add("no-swiper-wrapper");
+  slider.querySelector(".swiper-wrapper").classList.remove("swiper-wrapper");
+} else {
+  let pricingSlider = new Swiper(pricingSliderClass, {
+    breakpoints: {
+      // when window width is >= 992px
+      init: false,
+      1111: {
+        init: true,
+        spaceBetween: 30,
+        slidesPerView: 3,
+        edgeSwipeThreshold: 0,
+        autoHeight: true,
+        navigation: {
+          nextEl: ".pricing-slider__button-next",
+          prevEl: ".pricing-slider__button-prev",
+        },
+        allowSlideNext: false,
+        allowSlidePrev: false,
+      },
+    },
+  });
+  const pricingNext = pricingSlider.el.querySelector(
+    ".pricing-slider__button-next"
+  );
+  pricingNext.addEventListener("click", () => {
+    pricingSlider.allowSlideNext = true;
+    pricingSlider.slideNext();
+    pricingSlider.allowSlideNext = false;
+  });
 
-const pricingPrev = pricingSlider.el.querySelector(
-  ".pricing-slider__button-prev"
-);
-pricingPrev.addEventListener("click", () => {
-  pricingSlider.allowSlidePrev = true;
-  pricingSlider.slidePrev();
-  pricingSlider.allowSlidePrev = false;
-});
+  const pricingPrev = pricingSlider.el.querySelector(
+    ".pricing-slider__button-prev"
+  );
+  pricingPrev.addEventListener("click", () => {
+    pricingSlider.allowSlidePrev = true;
+    pricingSlider.slidePrev();
+    pricingSlider.allowSlidePrev = false;
+  });
+}
 
 const reviewsSlider = new Swiper(".reviews-slider", {
   loop: true,
@@ -86,9 +106,9 @@ function toggleDropdown(
   dropdownOpenedClass,
   dropdownBottomHeight
 ) {
-  if (dropdownTop.classList.value.includes(dropdownOpenedClass)) {
+  if (dropdownTop.parentElement.classList.value.includes(dropdownOpenedClass)) {
     dropdownBottom.style.maxHeight = "0";
-    dropdownTop.classList.remove(dropdownOpenedClass);
+    dropdownTop.parentElement.classList.remove(dropdownOpenedClass);
   } else {
     let heightModifier = 20;
     if (window.innerWidth < 575) heightModifier = 70;
@@ -96,16 +116,17 @@ function toggleDropdown(
     dropdownBottom.style.maxHeight = `${
       dropdownBottomHeight + heightModifier
     }px`;
-    dropdownTop.classList.add(dropdownOpenedClass);
+    dropdownTop.parentElement.classList.add(dropdownOpenedClass);
   }
 }
 
 accordions.forEach((accordion, index) => {
+  const currentTop = accordion.querySelector(".accordion__top");
   const currentBottom = accordion.querySelector(".accordion__bottom");
   const currentBottomHeight = currentBottom.clientHeight;
-  accordion.addEventListener("click", function () {
+  currentTop.addEventListener("click", function () {
     toggleDropdown(
-      this,
+      currentTop,
       currentBottom,
       dropdownOpenedClass,
       currentBottomHeight
@@ -113,10 +134,10 @@ accordions.forEach((accordion, index) => {
   });
 
   setTimeout(() => {
-    accordion.click();
+    currentTop.click();
     if (index > 0) {
       toggleDropdown(
-        accordion,
+        currentTop,
         currentBottom,
         dropdownOpenedClass,
         currentBottomHeight
