@@ -1,0 +1,25 @@
+.accordion {
+	overflow: hidden;
+	transition: all 0.3s;
+}
+
+.accordion__top {
+	cursor: pointer;
+	position: relative;
+	z-index: 2;
+}
+.accordion__toggler {
+	transition: all 0.3s;
+}
+
+.accordion__bottom {
+	transition: all 0.3s;
+	opacity: 0;
+	position: relative;
+	z-index: 1;
+}
+
+.accordion--opened .accordion__bottom {
+	margin-top: 0;
+	opacity: 1;
+}

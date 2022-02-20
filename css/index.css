@@ -1,4 +1,34 @@
 @charset "UTF-8";
+.accordion {
+  overflow: hidden;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.accordion__top {
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.accordion__toggler {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.accordion__bottom {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  opacity: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.accordion--opened .accordion__bottom {
+  margin-top: 0;
+  opacity: 1;
+}
+
 @font-face {
   src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
   font-family: "Montserrat";
@@ -221,6 +251,11 @@ img {
 
 .text--bold {
   font-weight: 800;
+}
+
+.form__callback {
+  max-width: 500px;
+  background-color: #fff;
 }
 
 .button__aligner {
@@ -657,12 +692,11 @@ img {
           align-items: center;
 }
 
-.help-dropdown__bottom {
+.help-accordion__bottom-inner {
   padding-left: 27px;
   padding-right: 27px;
   padding-top: 22px;
   padding-bottom: 30px;
-  display: none;
 }
 
 .help-dropdown__title {
@@ -701,16 +735,16 @@ img {
   list-style: decimal;
 }
 
-.help-dropdown--opened .help-dropdown__title {
+.accordion--opened .help-dropdown__title {
   color: #248da0;
 }
 
-.help-dropdown--opened .help-dropdown__toggler {
+.accordion--opened .help-dropdown__toggler {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-.help-dropdown--opened .help-dropdown__bottom {
+.accordion--opened .help-dropdown__bottom {
   display: block;
 }
 
@@ -1094,6 +1128,7 @@ img {
 
 .cases-accordion__bullets {
   padding-left: 38px;
+  margin-bottom: 30px;
 }
 
 .cases-accordion__bullet {
@@ -1130,10 +1165,6 @@ img {
 
 .cases-accordion__text:last-child {
   margin-bottom: 0;
-}
-
-.cases-accordion__bottom {
-  display: none;
 }
 
 .accordion--opened .cases-accordion__bottom {
@@ -1582,7 +1613,7 @@ img {
   margin-bottom: -40px;
 }
 
-.timer-cunter__button {
+.timer-counter__button {
   margin-left: auto;
   margin-right: auto;
 }
@@ -1628,12 +1659,11 @@ img {
           justify-content: space-between;
 }
 
-.faq-accordion__bottom {
+.faq-accordion__bottom-inner {
   padding-top: 24px;
   padding-left: 37px;
   padding-right: 37px;
   padding-bottom: 34px;
-  display: none;
 }
 
 .faq-accordion__title {
