@@ -67,6 +67,7 @@
 	--z-burger: 110;
 
 	--border-section: 170px;
+	--pointer-events-decor: none;
 }
 
 $fz-p: var(--font-regular);
@@ -193,6 +194,9 @@ body {
 		}
 	}
 }
+.show-more__hidden {
+	display: none;
+}
 
 .container {
 	padding: 0 15px;
@@ -275,7 +279,13 @@ img {
 	letter-spacing: 0.05em;
 	text-transform: uppercase;
 	color: #ffffff;
+	transition: 0.25s all;
+	&:hover {
+		background: linear-gradient(180deg, #46adc0 0%, #157182 100%);
+		transition: 0.25s all;
+	}
 }
+
 .button--secondary {
 	max-width: 200px;
 	width: 100%;
@@ -292,6 +302,12 @@ img {
 	letter-spacing: 0.05em;
 	color: #323c4b;
 	font-weight: 500;
+	transition: 0.25s all;
+	&:hover {
+		border-color: #46adc0;
+		color: #157182;
+		transition: 0.25s all;
+	}
 }
 .logo-img {
 	width: 120px;
@@ -353,6 +369,10 @@ img {
 	line-height: 22px;
 	letter-spacing: 0.05em;
 	color: rgba(50, 60, 75, 0.9);
+
+	&:focus {
+		border-color: #46adc0;
+	}
 }
 .form__button {
 	max-width: 100%;
@@ -373,6 +393,9 @@ img {
 	text-align: center;
 	text-decoration-line: underline;
 	color: #248da0;
+	&:hover {
+		text-decoration: none;
+	}
 }
 
 // @HEADER
@@ -439,6 +462,7 @@ img {
 	right: -70px;
 	bottom: -83px;
 	max-width: 745px;
+	pointer-events: var(--pointer-events-decor);
 }
 .hero__decor-left {
 	position: absolute;
@@ -958,6 +982,7 @@ img {
 	background-size: cover;
 	background-position: left;
 	background-repeat: no-repeat;
+	pointer-events: var(--pointer-events-decor);
 }
 .pros__decor-right {
 	position: absolute;
@@ -969,6 +994,7 @@ img {
 	background-size: cover;
 	background-position: right;
 	background-repeat: no-repeat;
+	pointer-events: var(--pointer-events-decor);
 }
 
 // @cases
@@ -1188,6 +1214,10 @@ img {
 	align-items: center;
 	justify-content: center;
 	padding-top: 50px;
+}
+
+.pricing__show-more {
+	display: none;
 }
 
 .slider__buttons {
@@ -1757,15 +1787,9 @@ img {
 	.pricing-bundle__head {
 		padding-right: 25px;
 	}
-	.pricing-slider {
-		column-count: 2;
-	}
 	.pricing-slider-slide {
 		break-inside: avoid;
 		margin-bottom: 30px;
-	}
-	.pricing-slider__buttons {
-		display: none;
 	}
 
 	.reviews {
@@ -1786,6 +1810,12 @@ img {
 }
 
 @media (max-width: 992px) {
+	.pricing-slider {
+		column-count: 2;
+	}
+	.pricing-slider__buttons {
+		display: none;
+	}
 	:root {
 		--fz-title-section: 35px;
 	}
@@ -2449,6 +2479,9 @@ img {
 
 	.pricing {
 		padding-bottom: 50px;
+	}
+	.pricing__show-more {
+		display: block;
 	}
 
 	.reviews {
