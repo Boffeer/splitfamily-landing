@@ -14,7 +14,7 @@ if (
     breakpoints: {
       // when window width is >= 992px
       init: false,
-      1111: {
+      992: {
         init: true,
         spaceBetween: 30,
         slidesPerView: 3,
