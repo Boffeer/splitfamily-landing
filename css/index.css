@@ -373,6 +373,10 @@ img {
   border-radius: 10px;
 }
 
+.form.poppa {
+  background-color: #fff;
+}
+
 @supports not ((-webkit-backdrop-filter: blur(14px)) or (backdrop-filter: blur(14px))) {
   .form {
     background-color: #fff;
@@ -1940,6 +1944,18 @@ img {
   }
 }
 
+@media (max-width: 1280px) {
+  .psycho__img {
+    max-width: 406px;
+  }
+}
+
+@media (max-width: 1280px) and (min-width: 1260px) {
+  .timer-counter__wrap {
+    background-position-x: -10px;
+  }
+}
+
 @media (max-width: 1260px) {
   :root {
     --border-section: 80px;
@@ -2843,6 +2859,23 @@ img {
     margin-left: auto;
     margin-right: auto;
     font-size: 13px;
+  }
+  .reviews-slide__profile {
+    position: relative;
+    bottom: 20px;
+  }
+  .reviews-slider-slide {
+    padding-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 

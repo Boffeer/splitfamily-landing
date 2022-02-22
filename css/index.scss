@@ -336,6 +336,9 @@ img {
 	backdrop-filter: blur(14px);
 	border-radius: 10px;
 }
+.form.poppa {
+	background-color: #fff;
+}
 
 @supports not (backdrop-filter: blur(14px)) {
 	.form {
@@ -1700,6 +1703,17 @@ img {
 		right: -255px;
 	}
 }
+@media (max-width: 1280px) {
+	.psycho__img {
+		max-width: 406px;
+	}
+}
+@media (max-width: 1280px) and (min-width: 1260px) {
+	.timer-counter__wrap {
+		background-position-x: -10px;
+	}
+}
+
 @media (max-width: 1260px) {
 	:root {
 		--border-section: 80px;
@@ -2631,6 +2645,16 @@ img {
 		margin-left: auto;
 		margin-right: auto;
 		font-size: 13px;
+	}
+	.reviews-slide__profile {
+		position: relative;
+		bottom: 20px;
+	}
+	.reviews-slider-slide {
+		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 }
 

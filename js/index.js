@@ -92,7 +92,7 @@ let reviewsMaxHeight = Math.max(...reviewsSliderHeights);
 
 function setMaxSlidesHeight(slider, slideClass, maxHeight) {
   slider.el.querySelectorAll(slideClass).forEach((element, index) => {
-    element.style.height = `${maxHeight}px`;
+    element.style.height = `${maxHeight + 100}px`;
   });
 }
 
