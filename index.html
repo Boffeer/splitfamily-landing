@@ -952,7 +952,7 @@
 				<div class="container">
 					<h2 class="pricing__title section__title">Наши цены</h2>
 					<div class="swiper pricing-slider">
-						<div class="swiper-wrapper">
+						<div class="swiper-wrapper pricing-slider__inner">
 							<article class="swiper-slide pricing-slider-slide">
 								<div class="pricing-bundle">
 									<div class="pricing-bundle__head">
@@ -1560,6 +1560,58 @@
 						</div>
 					</div>
 				</div>
+				<form class="form timer__form form__callback">
+					<h3 class="form__title">
+						Если есть какие-то вопросы, то Глава компании лично ответит на них
+					</h3>
+					<input
+						type="text"
+						hidden
+						disabled
+						class="input__formpage"
+						name="form_page"
+					/>
+					<input
+						type="text"
+						hidden
+						disabled
+						class="input__formname"
+						name="form_name"
+						value="Блок с таймером, получить скидку"
+					/>
+					<div class="form__inner">
+						<div class="form-input__wrap form-input__wrap--name">
+							<input
+								class="form-input form-input--name"
+								name="user-name"
+								type="text"
+								placeholder="Как вас зовут"
+								maxlength="50"
+							/>
+						</div>
+						<div class="form-input__wrap form-input__wrap--tel">
+							<input
+								class="form-input form-input--phone"
+								name="user-tel"
+								type="tel"
+								placeholder="Ваш номер телефона"
+								maxlength="25"
+								minlength="10"
+								required
+								inputmode="numeric"
+							/>
+						</div>
+						<button class="button button--primary form__button">
+							Оставить заявку
+						</button>
+						<p class="form__privacy">
+							Нажимая на кнопку, вы принимаете
+							<a href="#" class="form__privacy-link"
+								>политику конфиденциальности</a
+							>
+						</p>
+					</div>
+				</form>
 			</section>
 
 			<section class="faq">
@@ -1707,7 +1759,10 @@
 					</p>
 				</div>
 				<div class="footer__socials">
-					<a href="#vk" class="footer-social__link social__link">
+					<a
+						href="#vk"
+						class="footer-social__link social__link footer-social__link--vk"
+					>
 						<svg
 							width="26"
 							height="26"
@@ -1734,7 +1789,9 @@
 							</defs>
 						</svg>
 					</a>
-					<a href="#ig" class="footer-social__link social__link"
+					<a
+						href="#ig"
+						class="footer-social__link social__link footer-social__link--ig"
 						><svg
 							width="26"
 							height="26"
@@ -1760,7 +1817,10 @@
 							/>
 						</svg>
 					</a>
-					<a href="#wa" class="footer-social__link social__link">
+					<a
+						href="#wa"
+						class="footer-social__link social__link footer-social__link--wa"
+					>
 						<svg
 							width="25"
 							height="25"

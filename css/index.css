@@ -1548,6 +1548,7 @@ img {
 }
 
 .warranty {
+  overflow: hidden;
   padding-top: 170px;
   padding-bottom: 250px;
   background-image: url("../img/warranty/warranty-bg.png");
@@ -1599,7 +1600,7 @@ img {
 
 .warranty__img-wrap {
   position: absolute;
-  right: 0;
+  right: -30px;
   bottom: -100px;
   max-width: 60%;
   width: 100%;
@@ -1898,6 +1899,18 @@ img {
   margin-left: 0;
 }
 
+.footer-social__link--vk:hover circle {
+  fill: #248da0;
+}
+
+.footer-social__link--ig:hover path {
+  fill: #248da0;
+}
+
+.footer-social__link--wa:hover path:first-child {
+  fill: #248da0;
+}
+
 @media (max-width: 1870px) {
   .how__decor-left {
     width: 55%;
@@ -2047,6 +2060,49 @@ img {
   }
 }
 
+@media (max-width: 1160px) and (min-width: 1016px) {
+  .hero__img-wrap {
+    right: -180px;
+  }
+}
+
+@media (max-width: 1016px) and (min-width: 993px) {
+  .hero__img-wrap {
+    right: -260px;
+  }
+}
+
+@media (max-width: 1010px) {
+  .pros__offer {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .pros__offer::after {
+    display: none;
+  }
+  .pros__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .pros__decor-left,
+  .pros__decor-right {
+    display: none;
+  }
+  .pros__form {
+    -webkit-box-ordinal-group: 6;
+        -ms-flex-order: 5;
+            order: 5;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+    position: relative;
+  }
+}
+
 @media (max-width: 992px) {
   .pricing-slider {
     -webkit-column-count: 2;
@@ -2075,7 +2131,7 @@ img {
   }
   .hero__decor-right {
     top: 30px;
-    right: 20px;
+    right: -130px;
     width: 575px;
     height: 329px;
   }
@@ -2205,34 +2261,6 @@ img {
     margin-right: 0;
     margin-left: 0;
   }
-  .pros__offer {
-    max-width: 100%;
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  .pros__offer::after {
-    display: none;
-  }
-  .pros__container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .pros__decor-left,
-  .pros__decor-right {
-    display: none;
-  }
-  .pros__form {
-    -webkit-box-ordinal-group: 6;
-        -ms-flex-order: 5;
-            order: 5;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -20px;
-    position: relative;
-  }
   .reviews-slider-slide {
     max-width: 600px;
   }
@@ -2274,7 +2302,7 @@ img {
   }
   .timer-counter__wrap {
     max-width: 100%;
-    background-position-x: 20px;
+    background-position-x: 40%;
   }
 }
 
@@ -2288,6 +2316,9 @@ img {
     right: 0;
     bottom: unset;
     top: unset;
+  }
+  .hero__decor-right {
+    right: 20px;
   }
   .hero-bullet--4 {
     padding-bottom: 72px;
@@ -2377,7 +2408,13 @@ img {
     border-radius: 0;
   }
   .timer-counter__wrap {
-    background-position-x: -20px;
+    background-position-x: 30%;
+  }
+}
+
+@media (max-width: 728px) and (min-width: 576px) {
+  .timer-counter__wrap {
+    background-position-x: 20%;
   }
 }
 
@@ -2436,11 +2473,14 @@ img {
   }
   .hero__img-wrap {
     margin-bottom: -10px;
+    min-height: 304px;
   }
   .hero-bullet {
     width: 100%;
     margin-bottom: 50px;
     padding-bottom: 30px;
+    padding-left: 34px;
+    padding-right: 34px;
   }
   .hero-bullet:last-child {
     margin-bottom: 0;
@@ -2584,6 +2624,11 @@ img {
     max-width: 160%;
     width: 160%;
     margin-left: 50px;
+    max-height: 500px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: top;
+       object-position: top;
   }
   .psycho__button {
     font-size: 14px;

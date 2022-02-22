@@ -1,4 +1,23 @@
 const pricingSliderClass = ".pricing-slider";
+const pricingSliderSettings = {
+  breakpoints: {
+    // when window width is >= 992px
+    // init: false,
+    992: {
+      // init: true,
+      autoHeight: true,
+      spaceBetween: 30,
+      slidesPerView: 3,
+      edgeSwipeThreshold: 0,
+      navigation: {
+        nextEl: ".pricing-slider__button-next",
+        prevEl: ".pricing-slider__button-prev",
+      },
+      allowSlideNext: false,
+      allowSlidePrev: false,
+    },
+  },
+};
 if (
   document
     .querySelector(pricingSliderClass)
@@ -7,28 +26,16 @@ if (
 ) {
   const slider = document.querySelector(pricingSliderClass);
   slider.classList.remove("swiper");
-  slider.querySelector(".swiper-wrapper").classList.add("no-swiper-wrapper");
-  slider.querySelector(".swiper-wrapper").classList.remove("swiper-wrapper");
+  slider
+    .querySelector(".pricing-slider__inner")
+    .classList.remove("swiper-wrapper");
 } else {
-  let pricingSlider = new Swiper(pricingSliderClass, {
-    breakpoints: {
-      // when window width is >= 992px
-      init: false,
-      992: {
-        init: true,
-        spaceBetween: 30,
-        slidesPerView: 3,
-        edgeSwipeThreshold: 0,
-        autoHeight: true,
-        navigation: {
-          nextEl: ".pricing-slider__button-next",
-          prevEl: ".pricing-slider__button-prev",
-        },
-        allowSlideNext: false,
-        allowSlidePrev: false,
-      },
-    },
-  });
+  const slider = document.querySelector(pricingSliderClass);
+  slider.classList.add("swiper");
+  slider
+    .querySelector(".pricing-slider__inner")
+    .classList.add("swiper-wrapper");
+  let pricingSlider = new Swiper(pricingSliderClass, pricingSliderSettings);
   const pricingNext = pricingSlider.el.querySelector(
     ".pricing-slider__button-next"
   );
@@ -148,16 +155,11 @@ accordions.forEach((accordion, index) => {
 
 poppa({
   pop: ".pop-form__callback",
-  clickTrigger: [
-    ".header__button",
-    ".timer-counter__button",
-    ".footer__callback",
-  ],
+  clickTrigger: [".header__button", ".footer__callback"],
   onOpen() {},
 });
 
 const headerCallback = document.querySelector(".header__button");
-const timerCounterButton = document.querySelector(".timer-counter__button");
 const footerCallback = document.querySelector(".footer__callback");
 
 function handlePoppaButtonClick(button, form) {
@@ -171,18 +173,19 @@ headerCallback.addEventListener("click", (event) => {
     document.querySelector(".pop-form__callback")
   );
 });
-timerCounterButton.addEventListener("click", (event) => {
-  handlePoppaButtonClick(
-    event.target,
-    document.querySelector(".pop-form__callback")
-  );
+
+poppa({
+  pop: ".timer__form",
+  clickTrigger: [".timer-counter__button"],
+  onOpen() {},
 });
-timerCounterButton.addEventListener("click", (event) => {
-  handlePoppaButtonClick(
-    event.target,
-    document.querySelector(".pop-form__callback")
-  );
-});
+// const timerCounterButton = document.querySelector(".timer-counter__button");
+// timerCounterButton.addEventListener("click", (event) => {
+//   handlePoppaButtonClick(
+//     event.target,
+//     document.querySelector(".pop-form__callback")
+//   );
+// });
 
 /**
  * @pricing
@@ -275,7 +278,6 @@ if (localStorage.getItem("localTimer") == null) {
     new Date(Date.parse(new Date()) + HOURS * MINUTES * SECONDS * MILLISECONDS)
   );
 }
-console.log(localStorage.getItem("localTimer"));
 
 var deadline = localStorage.getItem("localTimer");
 // var deadline = new Date(Date.parse(new Date()) + 10 * 1000); // for endless timer
@@ -311,3 +313,28 @@ const pricingShowMore = document.querySelector(".pricing__show-more");
 if (window.innerWidth < 575) {
   showMore(pricingShowMore, ".pricing-slider-slide", 2);
 }
+
+poppa({
+  pop: ".pop-thanks",
+});
+
+const forms = document.querySelectorAll(".form");
+
+forms.forEach((form) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    console.log("form send");
+
+    // let response = await fetch("wp-content/themes/c21/send.php", {
+    let response = await fetch("send.php", {
+      method: "POST",
+      body: new URLSearchParams(new FormData(form)),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    let result = await response.json();
+    console.log(result);
+    openPop(".pop-thanks");
+  });
+});
